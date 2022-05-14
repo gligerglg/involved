@@ -1,31 +1,30 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
-const String _APP_TOKEN = 'app_token';
+import '../models/responses/comment_response.dart';
+
+const String _CACHE = '_CACHE';
 
 class AppSharedData {
-  SharedPreferences secureStorage;
+  SharedPreferences localStorage;
 
   AppSharedData(SharedPreferences preferences) {
-    secureStorage = preferences;
+    localStorage = preferences;
   }
 
-
-  ///AppData
-  /*bool hasBasicData() {
-    return secureStorage.containsKey(_APP_DATA);
+  bool hasCacheData() {
+    return localStorage.containsKey(_CACHE);
   }
 
-  setBasicData(BasicData basicData) {
-    secureStorage.setString(_APP_DATA, jsonEncode(basicData.toJson()));
+  setCacheData(CommentsResponseData data) {
+    localStorage.setString(_CACHE, jsonEncode(data.toJson()));
   }
 
-  BasicData getBasicData() {
-    return BasicData.fromJson(jsonDecode(secureStorage.getString(_APP_DATA)));
+  CommentsResponseData getCacheData() {
+    return CommentsResponseData.fromJson(jsonDecode(localStorage.getString(_CACHE)));
   }
 
   clearBasicData() {
-    secureStorage.remove(_APP_DATA);
-  }*/
-
+    localStorage.remove(_CACHE);
+  }
 }

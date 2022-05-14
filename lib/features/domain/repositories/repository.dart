@@ -1,8 +1,8 @@
-
 import 'package:dartz/dartz.dart';
 
+import '../../../error/failures.dart';
+import '../entities/response/comment_response_entity.dart';
 
 abstract class Repository {
-  /*Future<Either<Failure, SplashResponse>> splashRequest(
-      SplashRequest splashRequest);*/
+  Future<Either<Failure, List<CommentDataEntity>>> getComments();
 }

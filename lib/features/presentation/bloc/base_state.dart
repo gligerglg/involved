@@ -15,7 +15,3 @@ class APIFailureState<K> extends BaseState<K> {
 
   APIFailureState({this.errorResponseModel});
 }
-
-class APILoadingState<K> extends BaseState<K> {}
-
-class LogoutSuccessState<K> extends BaseState<K>{}

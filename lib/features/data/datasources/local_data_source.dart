@@ -1,19 +1,33 @@
+import 'package:involved/features/data/datasources/shared_preference.dart';
 import 'package:meta/meta.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+import '../models/responses/comment_response.dart';
 
 abstract class LocalDataSource {
-  // Future<UserDetailsForSharedModel> getUserForUserDetails();
+  CommentsResponseData getCachedComments();
+
+  cacheCommentData(CommentsResponseData commentData);
+
+  bool hasCacheData();
 }
 
 class LocalDataSourceImpl implements LocalDataSource {
-  final SharedPreferences sharedPreferences;
+  final AppSharedData sharedPreferences;
 
   LocalDataSourceImpl({@required this.sharedPreferences});
 
-/*@override
-  Future<UserDetailsForSharedModel> getUserForUserDetails() async{
-    final jsonString = sharedPreferences.getString(USER_DETAILS_FOR_USER);
-    final response = await Future.value(UserDetailsForSharedModel.fromJson(json.decode(jsonString)));
-    return response;
-  }*/
+  @override
+  cacheCommentData(CommentsResponseData commentData) {
+    sharedPreferences.setCacheData(commentData);
+  }
+
+  @override
+  CommentsResponseData getCachedComments() {
+    return sharedPreferences.getCacheData();
+  }
+
+  @override
+  bool hasCacheData() {
+    return sharedPreferences.hasCacheData();
+  }
 }

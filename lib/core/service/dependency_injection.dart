@@ -41,6 +41,8 @@ Future<void> setupLocator() async {
 
   ///Blocs
   injection.registerFactory(
-    () => PostBloc(),
+    () => PostBloc(
+      repository: injection()
+    ),
   );
 }

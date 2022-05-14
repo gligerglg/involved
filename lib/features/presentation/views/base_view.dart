@@ -1,13 +1,7 @@
-import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
-import 'dart:ui';
 
-import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../../../core/service/dependency_injection.dart';
 import '../../data/datasources/shared_preference.dart';

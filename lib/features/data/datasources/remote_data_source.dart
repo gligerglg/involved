@@ -1,10 +1,11 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
+import 'package:involved/features/data/models/responses/comment_response.dart';
 
 import '../../../core/network/api_helper.dart';
 
 abstract class RemoteDataSource {
-  // Future<SplashResponse> splashRequest(SplashRequest splashRequest);
+  Future<CommentResponse> getComments();
 }
 
 class RemoteDataSourceImpl implements RemoteDataSource {
@@ -12,18 +13,13 @@ class RemoteDataSourceImpl implements RemoteDataSource {
 
   RemoteDataSourceImpl({@required this.apiHelper});
 
-  /*@override
-  Future<SplashResponse> splashRequest(SplashRequest splashRequest) async {
+  @override
+  Future<CommentResponse> getComments() async {
     try {
-      var formData = FormData.fromMap({
-        'os_type': splashRequest.osType,
-        'build_number': splashRequest.buildNumber,
-      });
-
-      final response = await apiHelper.post("version/latest", body: formData);
-      return SplashResponse.fromJson(response.data);
+      final response = await apiHelper.getPostData();
+      return CommentResponse.fromJson(response);
     } on Exception {
       rethrow;
     }
-  }*/
+  }
 }
