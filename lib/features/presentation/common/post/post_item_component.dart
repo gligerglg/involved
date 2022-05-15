@@ -20,7 +20,6 @@ class PostItemComponent extends StatefulWidget {
 }
 
 class _PostItemComponentState extends State<PostItemComponent> {
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -109,6 +108,16 @@ class _PostItemComponentState extends State<PostItemComponent> {
                 child: Image.network(
                   widget.postEntity.postImage,
                   fit: BoxFit.cover,
+                  errorBuilder: (BuildContext context, Object exception,
+                      StackTrace stackTrace) {
+                    return const Center(
+                      child: Text(
+                        'Cannot load the image due to connection problem',
+                        style: TextStyle(color: AppColors.colorPrimary),
+                        textAlign: TextAlign.center,
+                      ),
+                    );
+                  },
                   loadingBuilder: (BuildContext context, Widget child,
                       ImageChunkEvent loadingProgress) {
                     if (loadingProgress == null) {
